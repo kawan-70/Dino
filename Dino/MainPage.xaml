@@ -1,9 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Dino.MainPage">
+             x:Class="Dino.MainPage"
+             Shell.NavBarIsVisible="false">
 
- 
+
+  <Grid>
+    <HorizontalStackLayout x:Name="primeiraimg">
+       <Image Source ="ceu.png"/>
+       <Image Source ="ceu.png"/>
+       <Image Source ="ceu.png"/>
+    </HorizontalStackLayout>
+  
+    <HorizontalStackLayout x:Name="segundaimg">
+       <Image Source ="momt.png"/>
+       <Image Source ="momt.png"/>
+       <Image Source ="momt.png"/>
+    </HorizontalStackLayout>
+
+    <HorizontalStackLayout x:Name="terceiraimg">
+       <Image Source ="arvore.png"/>
+       <Image Source ="arvore.png"/>
+       <Image Source ="arvore.png"/>
+    </HorizontalStackLayout>
+
+  </Grid>
 
  
 </ContentPage>
