@@ -5,43 +5,46 @@
              Shell.NavBarIsVisible="false">
 
 
-  <Grid>
-    <HorizontalStackLayout x:Name="primeiraimg">
-       <Image Source ="ceu.png"/>
-       <Image Source ="ceu.png"/>
-       <Image Source ="ceu.png"/>
-    </HorizontalStackLayout>
-  
-    <HorizontalStackLayout x:Name="segundaimg">
-       <Image Source ="momt.png"/>
-       <Image Source ="momt.png"/>
-       <Image Source ="momt.png"/>
-    </HorizontalStackLayout>
+   <Grid>
+      <HorizontalStackLayout x:Name="primeiraimg">
+         <Image Source="ceu.png"/>
+         <Image Source="ceu.png"/>
+         <Image Source="ceu.png"/>
+      </HorizontalStackLayout>
 
-    <HorizontalStackLayout x:Name="terceiraimg">
-       <Image Source ="ar.png"
-              HeightRequest="380"
-              Margin="0,60,0,0"/>
+      <HorizontalStackLayout x:Name="segundaimg">
+         <Image Source="momt.png"/>
+         <Image Source="momt.png"/>
+         <Image Source="momt.png"/>
+      </HorizontalStackLayout>
 
-       <Image Source ="ar.png"
-              HeightRequest="380"
-              Margin="0,60,30,0"/>
+      <HorizontalStackLayout x:Name="terceiraimg">
+         <Image Source="image-removebg-preview.png"    
+                Margin="0,80,0,0"/>
+         <Image Source="aimage-removebg-previewro.png"            
+                Margin="0,80,30,0"/>
+         <Image Source="image-removebg-preview.png"               
+                Margin="0,80,0,0"/>
+      </HorizontalStackLayout>
 
-       <Image Source ="ar.png"
-              HeightRequest="380"
-              Margin="0,60,0,0"/>
-    </HorizontalStackLayout>
+ <HorizontalStackLayout x:Name="segundaimg">
+         <Image Source="image-removebg-preview.png"/>
+      </HorizontalStackLayout>
 
-    <HorizontalStackLayout x:Name="quartaimg">
-       <Image Source ="chaoo.png"
-              Aspect="Fill"
-              VerticalOptions="Center"/>
-       <Image Source ="chaoo.png"/>
-       <Image Source ="chaoo.png"/>
-    </HorizontalStackLayout>
+      <HorizontalStackLayout x:Name="quartaimg">
+         <Image Source="chaoo.png"
+                Aspect="Fill"
+                VerticalOptions="Center"/>
+         <Image Source="chaoo.png"
+                Aspect="Fill"
+                VerticalOptions="Center"/>
+         <Image Source="chaoo.png"
+                Aspect="Fill"
+                VerticalOptions="Center"/>
+      </HorizontalStackLayout>
 
-  
-  </Grid>
 
- 
+   </Grid>
+
+
 </ContentPage>
