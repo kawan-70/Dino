@@ -19,11 +19,28 @@
     </HorizontalStackLayout>
 
     <HorizontalStackLayout x:Name="terceiraimg">
-       <Image Source ="arvore.png"/>
-       <Image Source ="arvore.png"/>
-       <Image Source ="arvore.png"/>
+       <Image Source ="ar.png"
+              HeightRequest="380"
+              Margin="0,60,0,0"/>
+
+       <Image Source ="ar.png"
+              HeightRequest="380"
+              Margin="0,60,30,0"/>
+
+       <Image Source ="ar.png"
+              HeightRequest="380"
+              Margin="0,60,0,0"/>
     </HorizontalStackLayout>
 
+    <HorizontalStackLayout x:Name="quartaimg">
+       <Image Source ="chaoo.png"
+              Aspect="Fill"
+              VerticalOptions="Center"/>
+       <Image Source ="chaoo.png"/>
+       <Image Source ="chaoo.png"/>
+    </HorizontalStackLayout>
+
+  
   </Grid>
 
  
