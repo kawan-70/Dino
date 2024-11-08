@@ -7,24 +7,33 @@
 
    <Grid>
       <HorizontalStackLayout x:Name="primeiraimg">
-         <Image Source="ceu.png"/>
-         <Image Source="ceu.png"/>
-         <Image Source="ceu.png"/>
+         <Image Source="ceu.png"
+                Aspect="Fill"/>
+         <Image Source="ceu.png"
+                Aspect="Fill"/>
+         <Image Source="ceu.png"
+                Aspect="Fill"/>
       </HorizontalStackLayout>
 
       <HorizontalStackLayout x:Name="segundaimg">
-         <Image Source="momt.png"/>
-         <Image Source="momt.png"/>
-         <Image Source="momt.png"/>
+         <Image Source="momt.png"
+                Aspect="Fill"/> 
+         <Image Source="momt.png"
+                Aspect="Fill"/>
+         <Image Source="momt.png"
+                Aspect="Fill"/>
       </HorizontalStackLayout>
 
       <HorizontalStackLayout x:Name="terceiraimg">
          <Image Source="aro.png"    
-                Margin="0,80,0,0"/>
+                Margin="0,80,0,0"
+                Aspect="Fill"/>
          <Image Source="aro.png"            
-                Margin="0,80,30,0"/>
+                Margin="0,80,30,0"
+                Aspect="Fill"/>
          <Image Source="aro.png"               
-                Margin="0,80,0,0"/>
+                Margin="0,80,0,0"
+                Aspect="Fill"/>
       </HorizontalStackLayout>
 
 
