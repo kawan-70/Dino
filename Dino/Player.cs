@@ -3,7 +3,7 @@ namespace Dino
     public delegate void CallBack();
     public class Player:Animation
     {
-        public Player(Image a): base(a)
+        public Player(CachedImageView a): base(a)
         {
             for(int numero = 1; numero <= 12; numero++)
                 Animacao1.Add($"saitama{numero.ToString("D2")}.png");
@@ -28,4 +28,3 @@ namespace Dino
 
     }
 }
- //xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"

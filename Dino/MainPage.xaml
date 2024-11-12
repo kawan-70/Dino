@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Dino.MainPage"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              Shell.NavBarIsVisible="false">
 
 
@@ -49,12 +50,14 @@
                 VerticalOptions="Center"/>
       </HorizontalStackLayout>
 
-       <Image x:Name="persona"
-              Source="saitama01.png"
-              HeightRequest="150"
-              VerticalOptions="End"
-              HorizontalOptions="Start"
-              Margin="0,0,0,125"/>
+ <ffimageloading:CachedImageView x:Name="persona"
+                                 CacheType ="All"
+                                 CacheDuration="365" 
+                                 Source="saitama01.png"
+                                 HeightRequest="150"
+                                 VerticalOptions="End"
+                                 HorizontalOptions="Start"
+                                 Margin="0,0,0,125"/>
    </Grid>
 
 
