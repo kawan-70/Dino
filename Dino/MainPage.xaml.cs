@@ -2,113 +2,70 @@
 
 public partial class MainPage : ContentPage
 {
-	
-
-	bool estamorto = false;
-
-	bool tapuland = false;
-	
-
-	const int TimeToFrame = 25;
-
-	int velocidadedaprimeiraimg = 0;
-	
-	int velocidadedasegundaimg = 0;
-	
-	int velocidadedaterceiraimg = 0;
-	
-	int velecidadedochao = 0;
-	
-	int alturadajanela = 0;
-
-	int larguradajanela = 0;
-
-	//------------------------------------------------------------------------//
+	bool EstaMorto = false;
+	bool EstaPulando = false;
+	const int TempoEntreFrames = 25;
+	int velocidade1 = 0;
+	int velocidade2 = 0;
+	int velocidade3 = 0;
+	int velocidade = 0;
+	int LarguraJanela = 0;
+	int AlturaJanela = 0;
+	Player player;
 
 	public MainPage()
 	{
 		InitializeComponent();
+		player = new Player(persona);
+		player.Run();
 	}
-
-
-	//------------------------------------------------------------------------//
-
-
-
-	//------------------------------------------------------------------------//
-	protected override void OnSizeAllocated(double w, double h)
+	protected override void OnSizeAllocated(double width, double height)
 	{
-		base.OnSizeAllocated(w, h);
-		FixScreenSize(w, h);
-		CalculateSpeed(w);
+		base.OnSizeAllocated(width, height);
+		CorrigeTamanhoCenario(width, height);
+		CalculaVelocidade(width);
 	}
-
-	protected override void OnAppearing()
+	void CalculaVelocidade(double width)
 	{
-		base.OnAppearing();
-		Drawn();
+		velocidade1 = (int)(width * 0.001);
+		velocidade2 = (int)(width * 0.004);
+		velocidade3 = (int)(width * 0.008);
+		velocidade = (int)(width * 0.01);
 	}
-	//------------------------------------------------------------------------//
-
-	void FixScreenSize(double w, double h)
+	void CorrigeTamanhoCenario(double width, double height)
 	{
-		foreach (var A in primeiraimg.Children)
-			(A as Image).WidthRequest = w;
-		foreach (var A in segundaimg.Children)
-			(A as Image).WidthRequest = w;
-		foreach (var A in terceiraimg.Children)
-			(A as Image).WidthRequest = w;
-		foreach (var A in quartaimg.Children)
-			(A as Image).WidthRequest = w;
+		foreach (var ceu in HsLayer1.Children)
+			(ceu as Image).WidthRequest = width;
+		foreach (var predio in HsLayer2.Children)
+			(predio as Image).WidthRequest = width;
+		foreach (var mato in HsLayer3.Children)
+			(mato as Image).WidthRequest = width;
+		foreach (var chao in HsLayer4Chao.Children)
+			(chao as Image).WidthRequest = width;
 
-		primeiraimg.WidthRequest = w * 1.5;
-		segundaimg.WidthRequest = w * 1.5;
-		terceiraimg.WidthRequest = w * 1.5;
-		quartaimg.WidthRequest = w * 1.5;
+		HsLayer1.WidthRequest = width;
+		HsLayer2.WidthRequest = width;
+		HsLayer3.WidthRequest = width;
+		HsLayer4Chao.WidthRequest = width;
 	}
 
-	//------------------------------------------------------------------------//
-	void CalculateSpeed(double w)
+	void GerenciaCenarios()
 	{
-		velocidadedaprimeiraimg = (int)(w * 0.001);
-		velocidadedasegundaimg = (int)(w * 0.004);
-		velocidadedaterceiraimg = (int)(w * 0.008);
-		velecidadedochao = (int)(w * 0.01);
+		MoveCenarios();
+		GerenciaCenarios(HsLayer1);
+		GerenciaCenarios(HsLayer2);
+		GerenciaCenarios(HsLayer3);
+		GerenciaCenarios(HsLayer4Chao);
 	}
 
-	//------------------------------------------------------------------------//
-	async Task Drawn()
+	void MoveCenarios()
 	{
-		while (!estamorto)
-		{
-			ManageScenes();
-			await Task.Delay(TimeToFrame);
-		}
+		HsLayer1.TranslationX -= velocidade1;
+		HsLayer2.TranslationX -= velocidade2;
+		HsLayer3.TranslationX -= velocidade3;
+		HsLayer4Chao.TranslationX -= velocidade;
 	}
-
-	//------------------------------------------------------------------------//
-	void MoveScene()
-	{
-		primeiraimg.TranslationX -= velocidadedaprimeiraimg;
-		segundaimg.TranslationX -= velocidadedasegundaimg;
-		terceiraimg.TranslationX -= velocidadedaterceiraimg;
-		quartaimg.TranslationX -= velecidadedochao;
-	}
-
-	//------------------------------------------------------------------------//
-	void ManageScenes()
-	{
-		MoveScene();
-		ManageScene(primeiraimg);
-		ManageScene(segundaimg);
-		ManageScene(terceiraimg);
-		ManageScene(quartaimg);
-	}
-
-
-	//------------------------------------------------------------------------//
-
-	void ManageScene(HorizontalStackLayout HSL)
+	void GerenciaCenarios(HorizontalStackLayout HSL)
 	{
 		var view = (HSL.Children.First() as Image);
 		if (view.WidthRequest + HSL.TranslationX < 0)
@@ -118,7 +75,19 @@ public partial class MainPage : ContentPage
 			HSL.TranslationX = view.TranslationX;
 		}
 	}
+	async Task Desenha()
+	{
+		while (!EstaMorto)
+		{
+			GerenciaCenarios();
+			player.Desenha();
+			await Task.Delay(TempoEntreFrames);
+		}
+	}
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+		Desenha();
+	}
 
-
-	//------------------------------------------------------------------------//
 }
