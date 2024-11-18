@@ -1,3 +1,4 @@
+using FFImageLoading.Maui;
 namespace Dino
 {
     public delegate void CallBack();

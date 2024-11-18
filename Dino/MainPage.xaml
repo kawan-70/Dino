@@ -53,6 +53,7 @@
  <ffimageloading:CachedImageView x:Name="persona"
                                  CacheType ="All"
                                  CacheDuration="365" 
+                                 Weidreqst=100
                                  Source="saitama01.png"
                                  HeightRequest="150"
                                  VerticalOptions="End"

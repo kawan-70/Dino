@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-
+﻿using FFImageLoading.Maui;
+using Microsoft.Extensions.Logging;
 namespace Dino;
 
 public static class MauiProgram
@@ -9,6 +9,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			.UseFFImageLoading()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

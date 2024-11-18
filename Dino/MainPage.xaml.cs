@@ -1,10 +1,11 @@
-﻿namespace Dino;
+﻿using FFImageLoading.Maui;
+namespace Dino;
 
 public partial class MainPage : ContentPage
 {
 	bool EstaMorto = false;
 	bool EstaPulando = false;
-	const int TempoEntreFrames = 25;
+	const int TempoEntreFrames = 29;
 	int velocidade1 = 0;
 	int velocidade2 = 0;
 	int velocidade3 = 0;
