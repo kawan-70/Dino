@@ -3,16 +3,32 @@ namespace Dino;
 
 public partial class MainPage : ContentPage
 {
+//____________________________________________________________________________________________________________________________________	
+
 	bool EstaMorto = false;
+	bool pulo = false;
+    bool EstaNoChao = true;
+	bool EstaNoAr = false;
 	bool EstaPulando = false;
-	const int TempoEntreFrames = 29;
+//____________________________________________________________________________________________________________________________________	
 	int velocidade1 = 0;
 	int velocidade2 = 0;
 	int velocidade3 = 0;
 	int velocidade = 0;
 	int LarguraJanela = 0;
 	int AlturaJanela = 0;
+//-------------------
 	Player player;
+//____________________________________________________________________________________________________________________________________
+	int TempoPulando = 0;
+	int TempoNoAr = 0;
+	const int ForcaPulo = 12;
+	const int maxTempoPulando = 10;
+	const int maxTempoNoAr = 4;
+	const int ForcaGravidade = 6;
+	const int TempoEntreFrames = 29;
+
+//____________________________________________________________________________________________________________________________________
 
 	public MainPage()
 	{
@@ -76,12 +92,18 @@ public partial class MainPage : ContentPage
 			HSL.TranslationX = view.TranslationX;
 		}
 	}
-	async Task Desenha()
+async Task Desenha()
 	{
 		while (!EstaMorto)
 		{
-			GerenciaCenarios();
-			player.Desenha();
+			GerenciarCenarios();
+			if (!EstaPulando && !EstaNoAr)
+			{
+				AplicaGravidade();
+				player.Desenha();
+			}
+			else
+				AplicaPulo();
 			await Task.Delay(TempoEntreFrames);
 		}
 	}
@@ -90,5 +112,44 @@ public partial class MainPage : ContentPage
 		base.OnAppearing();
 		Desenha();
 	}
-
+	void AplicaPulo()
+	{
+		EstaNoChao = false;
+		if (EstaPulando && TempoPulando >= maxTempoPulando)
+		{
+			EstaPulando = false;
+			EstaNoAr = true;
+			TempoNoAr = 0;
+		}
+		else if (EstaNoAr && TempoNoAr >= maxTempoNoAr)
+		{
+			EstaPulando = false;
+			EstaNoAr = false;
+			TempoPulando = 0;
+			TempoNoAr = 0;
+		}
+		else if (EstaPulando && TempoPulando < maxTempoPulando)
+		{
+			player.MoveY(-ForcaPulo);
+			TempoPulando++;
+		}
+		else if (EstaNoAr)
+			TempoNoAr++;
+	}
+	void OnGridTapped(object o, TappedEventArgs a)
+	{
+		if (EstaNoChao)
+			EstaPulando = true;
+	}
+	void AplicaGravidade()
+	{
+		if (player.GetY() < 0)
+			player.MoveY(ForcaGravidade);
+		else if (player.GetY() >= 0)
+		{
+			player.SetY(0);
+			EstaNoChao = true;
+		}
+	}
 }
+

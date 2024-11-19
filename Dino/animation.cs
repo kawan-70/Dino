@@ -36,7 +36,7 @@ public class Animation
         Parado = true;
     }
 
-    public void Corre()
+    public void Play()
     {
         Parado = false;
     }

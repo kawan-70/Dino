@@ -1,8 +1,9 @@
 using FFImageLoading.Maui;
+using System.Linq.Expressions;
 namespace Dino
 {
     public delegate void CallBack();
-    public class Player:Animation
+    public class Player : Animation
     {
         public Player(CachedImageView a): base(a)
         {
@@ -13,19 +14,28 @@ namespace Dino
                 Animacao2.Add($"morto{numero2.ToString("D2")}.png");
                 SetAnimacaoAtiva(1);
         }
-
-        public void Morto()
-        {
-            loop = false;
-            SetAnimacaoAtiva(2);
-        }
-
-        public void Run()
-        {
-            loop = true;
-            SetAnimacaoAtiva(1);
-            Corre();
-        }
-
+  public void Die()
+    {
+        loop = false;
+        SetAnimacaoAtiva(2);
     }
+    public void Run()
+    {
+        loop = true;
+        SetAnimacaoAtiva(1);
+        Play();
+    }
+    public void MoveY (int s)
+    {
+        ImageView.TranslationY +=s;
+    }
+    public double GetY ()
+    {
+        return ImageView.TranslationY;
+    }
+    public void SetY (double a)
+    {
+        ImageView.TranslationY = a;
+    }
+}
 }
