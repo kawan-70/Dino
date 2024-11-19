@@ -93,10 +93,10 @@ public partial class MainPage : ContentPage
 		}
 	}
 async Task Desenha()
-	{
+	{ 
 		while (!EstaMorto)
 		{
-			GerenciarCenarios();
+			     GerenciaCenarios();
 			if (!EstaPulando && !EstaNoAr)
 			{
 				AplicaGravidade();
